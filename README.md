@@ -1,5 +1,8 @@
 # todo-app
 ***********INTRODUCTION*************
+
+
+
 A todo app is a simple yet powerful tool that helps individuals and teams stay organized and manage their tasks effectively. 
 Here are some common applications and features of a todo app:
 
@@ -65,10 +68,11 @@ Install dependencies: Run the following command to install the required dependen
 Copy code
 
 
- `npm install express body-parser mongodb mongoose ejs`
+      `npm install express body-parser mongodb mongoose ejs`
 
  
 Create the models directory: Inside your project directory, create a new directory called models.
+
 
 Create a file named `todo.js` inside the models directory and add the following code:
 
@@ -79,22 +83,22 @@ Copy code
 
 
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+                      const mongoose = require('mongoose');
+                     const Schema = mongoose.Schema;
 
-const todoSchema = new Schema({
-  todo: {
-    type: String,
-    required: true,
-  },
-});
+                     const todoSchema = new Schema({
+                      todo: {
+                              type: String,
+                               required: true,
+                                               },
+                                                 });
 
-todoSchema.statics.findTodos = function () {
-  return this.find().exec();
-};
+                        todoSchema.statics.findTodos = function () {
+                                 return this.find().exec();
+                                                       };
 
-const Todo = mongoose.model('Todo', todoSchema);
-module.exports = Todo;
+                        const Todo = mongoose.model('Todo', todoSchema);
+                                     module.exports = Todo;
 
 
 
@@ -104,14 +108,14 @@ module.exports = Todo;
 
 Create a file named `index.ejs` in the root of your project and add your desired HTML/EJS code for the view.
 
-Copy the provided code and save it in a file, such as app.js, in the root of your project.
+Copy the provided code and save it in a file, such as  `app.js`, in the root of your project.
 
 Replace the MongoDB connection URI (dbURI) in the code with your own MongoDB database connection string. You can create a free MongoDB Atlas account and obtain the connection URI from there.
 
 Start the server: Run the following command to start the server:
 
 Copy code
-node app.js
+              `node app.js`
 You should see the message "Server is running on port 3000" in the console, indicating that the server is running successfully.
 
 Access the app: Open a web browser and visit http://localhost:3000 to access the todo app.
