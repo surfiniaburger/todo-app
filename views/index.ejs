@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task list 2023</title>
+    <style>
+        /* CSS styles */
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .todo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .todo-actions {
+            display: flex;
+        }
+
+        .todo-edit,
+        .todo-delete {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo list</h1>
+        <form id="addTodoForm" autocomplete="off">
+            <input type="text" placeholder="What do you have planned?" id="todoInput" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <% if (data) { %>
+            <% data.forEach(todoValue => { %>
+                <!-- Todo item container -->
+                <div class="todo-container">
+                    <!-- Todo value -->
+                    <div class="todo-value"><%= todoValue.todo %></div>
+                    <!-- Todo actions (edit and delete buttons) -->
+                    <div class="todo-actions">
+                        <button class="todo-edit" data-id="<%= todoValue._id %>">Edit</button>
+                        <button class="todo-delete" data-id="<%= todoValue._id %>">Delete</button>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <script>
+        // Select delete buttons
+        const deleteButtons = document.querySelectorAll('.todo-delete');
+        // Select edit buttons
+        const editButtons = document.querySelectorAll('.todo-edit');
+        // Select add todo form and input
+        const addTodoForm = document.getElementById('addTodoForm');
+        const todoInput = document.getElementById('todoInput');
+
+        // Delete button event listeners
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const todoId = button.dataset.id;
+                // Send DELETE request to delete the todo
+                fetch(`/${todoId}`, {
+                    method: 'DELETE'
+                })
+                .then(() => {
+                    // Refresh the page after successful deletion
+                    window.location.href = '/';
+                })
+                .catch(error => {
+                    console.error('Error deleting todo:', error);
+                });
+            });
+        });
+
+        // Edit button event listeners
+        editButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const todoId = button.dataset.id;
+                // Get the current todo value
+                const todoValueElement = button.parentNode.previousElementSibling;
+                const updatedTodoValue = prompt('Enter the updated todo value:', todoValueElement.textContent.trim());
+                if (updatedTodoValue) {
+                    // Send PUT request to update the todo value
+                    fetch(`/${todoId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ todoValue: updatedTodoValue })
+                    })
+                    .then(() => {
+                        // Update the todo value in the UI
+                        todoValueElement.textContent = updatedTodoValue;
+                    })
+                    .catch(error => {
+                        console.error('Error updating todo:', error);
+                    });
+                }
+            });
+        });
+
+        // Add todo form submit event listener
+        addTodoForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const todoValue = todoInput.value;
+            if (todoValue) {
+                // Send POST request to add a new todo
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ todoValue })
+                })
+                .then(() => {
+                    // Refresh the page after successful addition
+                    window.location.href = '/';
+                })
+                .catch(error => {
+                    console.error('Error adding todo:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
