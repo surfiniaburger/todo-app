@@ -59,7 +59,7 @@ Initialize the project: Run the following command to initialize a new Node.js pr
 Copy code
 
 
-      `npm init -y`
+      npm init -y
 	
 	
 Install dependencies: Run the following command to install the required dependencies (Express, body-parser, MongoDB driver, Mongoose):
@@ -68,7 +68,7 @@ Install dependencies: Run the following command to install the required dependen
 Copy code
 
 
-     ` `npm install express body-parser mongodb mongoose ejs``
+     ` npm install express body-parser mongodb mongoose ejs  `
 
  
 Create the models directory: Inside your project directory, create a new directory called models.
