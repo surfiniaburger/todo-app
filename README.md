@@ -42,6 +42,9 @@ Overall, a todo app provides a structured approach to task management, helping i
 
 *********INSTALLATION************
 
+
+
+
 To run the provided code, you need to follow these steps:
 
 Install Node.js: Ensure that you have Node.js installed on your machine. You can download and install Node.js from the official website: https://nodejs.org
@@ -126,6 +129,9 @@ That's it! You should now be able to use the todo app and perform CRUD operation
 
 
 *************API ENDPOINTS********************
+
+
+
 Explanation of the API endpoints and their expected request/response formats in your code:
 
 GET /
@@ -155,6 +161,9 @@ Response Format: Responds with the deleted todo as JSON.
 
 
 ***********DEPENDENCIES******************************
+
+
+
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
