@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const dbURI =
-  'mongodb+srv://surfiniaburger:%40WockyRocky007@cluster0.ybfzbj2.mongodb.net/tododb';
+  'mongodb+srv://<username>:<password>@cluster0.ybbbbbbb.mongodb.net/tododb';
 
 // Connect to the MongoDB database
 mongoose.connect(dbURI, {
