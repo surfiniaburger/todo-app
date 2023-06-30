@@ -97,8 +97,8 @@ Copy code
                                                  });
 
                         todoSchema.statics.findTodos = function () {
-                                 return this.find().exec();
-                                                       };
+                                                                return this.find().exec();
+                                                          };
 
                         const Todo = mongoose.model('Todo', todoSchema);
                                      module.exports = Todo;
