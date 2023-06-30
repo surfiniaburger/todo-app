@@ -51,21 +51,35 @@ b. Open a terminal or command prompt and navigate to the project directory.
 
 Initialize the project: Run the following command to initialize a new Node.js project and create a package.json file:
 
-csharp
+
+
 Copy code
+
+
       `npm init -y`
+	
+	
 Install dependencies: Run the following command to install the required dependencies (Express, body-parser, MongoDB driver, Mongoose):
 
-css
+
 Copy code
+
+
  `npm install express body-parser mongodb mongoose ejs`
+
+ 
 Create the models directory: Inside your project directory, create a new directory called models.
 
-Create a file named todo.js inside the models directory and add the following code:
+Create a file named `todo.js` inside the models directory and add the following code:
 
-javascript
+
+
+
 Copy code
-`const mongoose = require('mongoose');
+
+
+
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
@@ -80,9 +94,15 @@ todoSchema.statics.findTodos = function () {
 };
 
 const Todo = mongoose.model('Todo', todoSchema);
-module.exports = Todo;`
+module.exports = Todo;
 
-Create a file named index.ejs in the root of your project and add your desired HTML/EJS code for the view.
+
+
+
+
+
+
+Create a file named `index.ejs` in the root of your project and add your desired HTML/EJS code for the view.
 
 Copy the provided code and save it in a file, such as app.js, in the root of your project.
 
